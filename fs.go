@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/neclepsio/go-epub/internal/storage"
-	"github.com/neclepsio/go-epub/internal/storage/memory"
-	"github.com/neclepsio/go-epub/internal/storage/osfs"
+	"github.com/go-shiori/go-epub/internal/storage"
+	"github.com/go-shiori/go-epub/internal/storage/memory"
+	"github.com/go-shiori/go-epub/internal/storage/osfs"
 )
 
 type FSType int
