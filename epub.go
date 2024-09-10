@@ -401,7 +401,7 @@ func (e *Epub) addSection(parentFilename string, body string, sectionTitle strin
 	return internalFilename, nil
 }
 
-// supports mathml, svg, scripted (partially)
+// supports mathml, svg, scripted
 // does not support remote-sources, switch (deprecated)
 func propertiesFromBody(body string) string {
 	prop := map[string]bool{}
@@ -417,12 +417,15 @@ func propertiesFromBody(body string) string {
 			switch strings.ToUpper(se.Name.Local) {
 			case "SVG":
 				prop["svg"] = true
-			case "MATHML":
-				prop["mathml"] = true
+			case "MATH":
+				if se.Name.Space == "http://www.w3.org/1998/Math/MathML" {
+					prop["mathml"] = true
+				}
 			case "SCRIPT":
 				prop["scripted"] = true
-			case "FORM":
-				prop["scripted"] = true
+				// See the comment in TestSectionProperties
+				//case "FORM":
+				//	prop["scripted"] = true
 			}
 		default:
 		}
