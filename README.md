@@ -41,7 +41,7 @@ If EPUBCheck is installed locally, it will be run alongside the Go tests. To ins
    unzip epubcheck-5.1.0.zip
    ```
 
-   You can use this command to download and extract the latest versions of EpubCheck.
+   You can use this command to download and extract the latest versions of EPUBCheck (recommended).
 
    ```
    curl -s https://api.github.com/repos/w3c/epubcheck/releases/latest | awk -F': "' '/browser_download_url/ && /epubcheck/ {gsub(/"$/, "", $2); print $2}' | xargs curl -Lo epubcheck.zip
