@@ -37,8 +37,8 @@ If EPUBCheck is installed locally, it will be run alongside the Go tests. To ins
 1. Download and extract EPUBCheck in the root directory of this project, e.g.
 
    ```
-   wget https://github.com/IDPF/epubcheck/releases/download/v4.2.5/epubcheck-4.2.5.zip
-   unzip epubcheck-4.2.5.zip
+   wget https://github.com/IDPF/epubcheck/releases/download/v4.2.5/epubcheck-5.1.0.zip
+   unzip epubcheck-5.1.0.zip
    ```
 
 If you do not wish to install EPUBCheck locally, you can manually validate the EPUB:

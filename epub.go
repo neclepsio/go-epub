@@ -421,11 +421,8 @@ func propertiesFromBody(body string) string {
 				if se.Name.Space == "http://www.w3.org/1998/Math/MathML" {
 					prop["mathml"] = true
 				}
-			case "SCRIPT":
+			case "SCRIPT", "FORM":
 				prop["scripted"] = true
-				// See the comment in TestSectionProperties
-				//case "FORM":
-				//	prop["scripted"] = true
 			}
 		default:
 		}

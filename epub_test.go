@@ -1502,15 +1502,10 @@ func TestSectionProperties(t *testing.T) {
 		t.Errorf("Error adding section: %s", err)
 	}
 
-	// https://www.w3.org/TR/epub-33/#sec-scripted says "scripted" should be added
-	// when there are form elements, but epubcheck disagrees.
-	// See also: https://github.com/w3c/epubcheck/blob/55aad60015ac644a04f7e2648d9969f80d5922b6/src/main/java/com/adobe/epubcheck/ops/OPSHandler30.java#L349
-	/*
-		_, err = e.AddSection(`<h1>Section 4</h1><form></form>`, "Section 4", "section0004.xhtml", "")
-		if err != nil {
-			t.Errorf("Error adding section: %s", err)
-		}
-	*/
+	_, err = e.AddSection(`<h1>Section 4</h1><form></form>`, "Section 4", "section0004.xhtml", "")
+	if err != nil {
+		t.Errorf("Error adding section: %s", err)
+	}
 
 	_, err = e.AddSection("<h1>Section 5</h1><p><math xmlns='http://www.w3.org/1998/Math/MathML'></math></p>", "Section 5", "section0005.xhtml", "")
 	if err != nil {
