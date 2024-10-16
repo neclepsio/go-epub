@@ -1,4 +1,4 @@
-module github.com/go-shiori/go-epub
+module github.com/neclepsio/go-epub
 
 go 1.23.1
 
