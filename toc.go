@@ -152,6 +152,10 @@ func newTocNcxXML() (*tocNcxRoot, error) {
 // TODO: user should not add -1 as filename
 // Add a section to the TOC (navXML as well as ncxXML)
 func (t *toc) addSubSection(parent string, index int, title string, relativePath string) {
+	if title == "" {
+		return
+	}
+
 	relativePath = filepath.ToSlash(relativePath)
 	if parent == "-1" {
 
