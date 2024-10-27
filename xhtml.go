@@ -102,6 +102,9 @@ func (x *xhtml) setCSS(path string) {
 }
 
 func (x *xhtml) setTitle(title string) {
+	if title == "" {
+		title = "--n/a--"
+	}
 	x.xml.Head.Title = xhtmlTitle{
 		Dir:   "auto",
 		Value: title,
