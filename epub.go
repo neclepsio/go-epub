@@ -50,6 +50,11 @@ import (
 	"github.com/vincent-petithory/dataurl"
 )
 
+const (
+	noParent = "\ue000-noParent"
+	noTitle  = "\ue000-noTitle"
+)
+
 // FilenameAlreadyUsedError is thrown by AddCSS, AddFont, AddImage, or AddSection
 // if the same filename is used more than once.
 type FilenameAlreadyUsedError struct {

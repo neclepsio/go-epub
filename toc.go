@@ -149,15 +149,14 @@ func newTocNcxXML() (*tocNcxRoot, error) {
 	return n, nil
 }
 
-// TODO: user should not add -1 as filename
 // Add a section to the TOC (navXML as well as ncxXML)
 func (t *toc) addSubSection(parent string, index int, title string, relativePath string) {
-	if title == "--n/a--" {
+	if title == noTitle {
 		return
 	}
 
 	relativePath = filepath.ToSlash(relativePath)
-	if parent == "-1" {
+	if parent == noParent {
 
 		l := &tocNavItem{
 			A: tocNavLink{
@@ -215,7 +214,7 @@ func (t *toc) setTitle(title string) {
 }
 
 // Write the TOC files
-func (t *toc) write(tempDir string) error {
+func (t *toc) write(tempDir string, e *Epub) error {
 	err := t.writeNavDoc(tempDir)
 	if err != nil {
 		return err

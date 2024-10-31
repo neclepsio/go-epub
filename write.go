@@ -424,7 +424,7 @@ func (e *Epub) writePackageFile(rootEpubDir string) {
 // the TOC and package files
 func (e *Epub) writeSections(rootEpubDir string) {
 	filenamelist := getFilenames(e.sections)
-	parentlist := getParents(e.sections, "-1")
+	parentlist := getParents(e.sections, noParent)
 	if len(e.sections) > 0 {
 		// If a cover was set, add it to the package spine first so it shows up
 		// first in the reading order
@@ -444,7 +444,7 @@ func (e *Epub) writeToc(rootEpubDir string) {
 	e.pkg.addToManifest(tocNavItemID, tocNavFilename, mediaTypeXhtml, tocNavItemProperties)
 	e.pkg.addToManifest(tocNcxItemID, tocNcxFilename, mediaTypeNcx, "")
 
-	err := e.toc.write(rootEpubDir)
+	err := e.toc.write(rootEpubDir, e)
 	if err != nil {
 		log.Println(err)
 	}
@@ -486,11 +486,11 @@ func writeSections(rootEpubDir string, e *Epub, sections []*epubSection, parentf
 			e.pkg.addToSpine(section.filename)
 		}
 		e.pkg.addToManifest(section.filename, relativePath, mediaTypeXhtml, section.properties)
-		if parentfilename[section.filename] == "-1" && section.filename != e.cover.xhtmlFilename {
+		if parentfilename[section.filename] == noParent && section.filename != e.cover.xhtmlFilename {
 			j := filenamelist[section.filename]
-			e.toc.addSubSection("-1", j, section.xhtml.Title(), relativePath)
+			e.toc.addSubSection(noParent, j, section.xhtml.Title(), relativePath)
 		}
-		if parentfilename[section.filename] != "-1" && section.filename != e.cover.xhtmlFilename {
+		if parentfilename[section.filename] != noParent && section.filename != e.cover.xhtmlFilename {
 			j := filenamelist[section.filename]
 			parentfilenameis := parentfilename[section.filename]
 			e.toc.addSubSection(parentfilenameis, j, section.xhtml.Title(), relativePath)
