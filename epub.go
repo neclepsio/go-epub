@@ -97,7 +97,7 @@ const (
 
 const (
 	cssFileFormat          = "css%04d%s"
-	defaultCoverBody       = `<img src="%s" alt="Cover Image" />`
+	defaultCoverBody       = `<img src="%s" alt="Cover Image" epub:type="cover" id="cover_image" role="doc-cover" />`
 	defaultCoverCSSContent = `body {
   background-color: #FFFFFF;
   margin-bottom: 0px;
